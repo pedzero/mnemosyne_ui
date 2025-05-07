@@ -44,7 +44,7 @@ function getSocialIcon(name: string) {
                 <h1 class="text-3xl font-bold text-white">{{ profile?.name }}</h1>
                 <p class="text-base font-light text-neutral-300">{{ profile?.summary }}</p>
             </div>
-            <div class="bg-white/5 backdrop-blur-sm p-4 rounded-xl flex gap-4">
+            <div class="bg-white/5 backdrop-blur-sm p-4 rounded-xl flex flex-col gap-4">
                 <a v-for="social in profile?.socials" :key="social.name" :href="social.url" target="_blank"
                     rel="noopener noreferrer">
                     <component :is="getSocialIcon(social.name)"
