@@ -6,6 +6,7 @@ import ProjectCard from '../components/ProjectCard.vue'
 import EducationCard from '../components/EducationCard.vue'
 import type { Profile, Project } from '../types/index'
 import { Github, Linkedin, Youtube, Mail } from 'lucide-vue-next'
+import NebulaBackground from '../components/backgrounds/NebulaBackground.vue'
 
 const profile = ref<Profile | null>(null)
 const projects = ref<Project[]>([])
@@ -26,8 +27,9 @@ function getSocialIcon(name: string) {
 </script>
 
 <template>
-    <main class="min-h-screen bg-[#1e1e2f] text-white font-space-grotesk px-6 py-8 space-y-12 relative overflow-hidden">
-        <div class="absolute inset-0 bg-gradient-to-br from-[#1e1e2f] to-[#2a1f38] opacity-70 -z-10"></div>
+    <NebulaBackground />
+
+    <main class="relative z-0 min-h-screen text-white font-space-grotesk px-6 py-8 space-y-12 bg-transparent">
 
         <!-- header -->
         <header class="flex flex-col md:flex-row justify-between items-center gap-4 mb-6">

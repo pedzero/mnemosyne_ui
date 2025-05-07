@@ -1,5 +1,5 @@
 <template>
-    <div class="group relative w-full max-w-sm rounded-2xl bg-white/5 backdrop-blur-md border border-white/10 shadow-xl overflow-hidden transform-gpu transition-transform duration-300 ease-out hover:rotate-[0.5deg] hover:scale-[1.03] hover:shadow-[0_8px_30px_rgba(0,0,0,0.4)]"
+    <div class="group relative w-full max-w-sm rounded-2xl bg-white/5 backdrop-blur-sm border border-white/10 shadow-xl overflow-hidden transform-gpu transition-transform duration-300 ease-out hover:rotate-[0.25deg] hover:scale-[1.01] hover:shadow-[0_8px_30px_rgba(42,21,63,0.4)]"
         :style="{ perspective: '1000px' }">
 
         <!-- Imagem -->

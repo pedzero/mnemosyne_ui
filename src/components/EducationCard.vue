@@ -1,6 +1,6 @@
 <template>
     <div
-        class="bg-white/5 border border-white/10 backdrop-blur-md p-4 rounded-2xl shadow-md flex flex-col sm:flex-row sm:justify-between sm:items-start">
+        class="bg-white/5 border border-white/10 backdrop-blur-sm p-4 rounded-2xl shadow-md flex flex-col sm:flex-row sm:justify-between sm:items-start">
         <div class="flex items-start gap-2">
             <GraduationCap class="w-5 h-5 text-white/70 mt-[2px]" />
             <div>

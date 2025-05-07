@@ -1,5 +1,5 @@
 <template>
-  <main class="font-sans bg-neutral-900 text-white min-h-screen">
+  <main class="font-sans bg-transparent text-white min-h-screen relative z-0">
     <HomePage />
   </main>
 </template>
