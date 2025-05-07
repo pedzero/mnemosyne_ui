@@ -48,5 +48,5 @@ export interface Repository {
 }
 
 export interface Image {
-    data: string
+    data: Array<number>
 }
