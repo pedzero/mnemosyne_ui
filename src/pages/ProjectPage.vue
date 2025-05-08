@@ -38,7 +38,7 @@
                 <!-- Carrossel -->
                 <div class="flex-1 min-h-[400px] relative overflow-hidden rounded-lg">
                     <div v-if="project?.images?.length" class="h-full w-full relative">
-                        <img v-for="(src, i) in decodedImages" :key="i" :src="src" alt="Imagem do projeto"
+                        <img v-for="(img, i) in project.images" :key="i" :src="img.url" alt="Imagem do projeto"
                             class="absolute top-0 left-0 w-full h-full object-cover transition-opacity duration-1000"
                             :class="{ 'opacity-100': currentImage === i, 'opacity-0': currentImage !== i }" />
                     </div>
@@ -96,7 +96,6 @@
 
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
-import { computed } from 'vue'
 import { useRoute } from 'vue-router'
 import type { Project } from '../types/index'
 import NebulaBackground from '../components/backgrounds/NebulaBackground.vue'
@@ -157,21 +156,6 @@ onMounted(async () => {
             }, 5000)
         }
     }
-})
-
-const decodedImages = computed(() => {
-    return (project.value?.images ?? [])
-        .map((img) => {
-            const byteArray = Object.values(img.data ?? {})
-            try {
-                const binary = String.fromCharCode(...byteArray)
-                return `data:image/png;base64,${btoa(binary)}`
-            } catch (e) {
-                console.error('Erro ao decodificar imagem', e)
-                return null
-            }
-        })
-        .filter((src): src is string => src !== null)
 })
 
 function getRepositoryIcon(url: string) {

@@ -32,7 +32,6 @@
 <script setup lang="ts">
 import { FolderGit2, UserRoundPlus } from 'lucide-vue-next'
 import { useRouter } from 'vue-router'
-import { computed } from 'vue'
 import type { Collaborator, Image, Repository } from '../types/index'
 
 const props = defineProps<{
@@ -52,22 +51,7 @@ function handleClick() {
     router.push(`/projects/${props.project.id}`)
 }
 
-const firstImageSrc = computed(() => {
-    const image = props.project.images?.[0]
-    const data = image?.data
-
-    if (!data) return null
-
-    const byteArray = Object.values(data)
-
-    try {
-        const binary = String.fromCharCode(...byteArray)
-        return `data:image/png;base64,${btoa(binary)}`
-    } catch (e) {
-        console.error('Erro ao converter imagem:', e)
-        return null
-    }
-})
+const firstImageSrc = props.project.images?.[0]?.url || ''
 
 </script>
 
