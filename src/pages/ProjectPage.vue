@@ -1,9 +1,9 @@
 <template>
     <NebulaBackground />
 
-    <main class="relative z-0 min-h-screen text-white font-space-grotesk px-6 py-8 space-y-12 bg-transparent">
-        <section class="max-w-7xl mx-auto flex flex-col space-y-6 bg-white/5 backdrop-blur-sm p-6 rounded-xl">
-
+    <main
+        class="relative z-0 min-h-screen py-8 flex items-center justify-center text-white font-space-grotesk px-6 py-8 bg-transparent">
+        <section class="w-full max-w-screen-xl space-y-6 bg-white/5 backdrop-blur-sm p-6 rounded-xl">
             <!-- Header do Projeto -->
             <div class="flex justify-between w-full">
                 <!-- Esquerda: Botão + Nome + Summary -->
@@ -36,11 +36,13 @@
             <!-- Área principal: Carrossel + Detalhes -->
             <div class="flex flex-col md:flex-row gap-8">
                 <!-- Carrossel -->
-                <div class="flex-1 min-h-[400px] relative overflow-hidden rounded-lg">
+                <div class="flex-1 min-h-[250px] sm:min-h-[300px] md:min-h-[400px] relative overflow-hidden rounded-lg">
                     <div v-if="project?.images?.length" class="h-full w-full relative">
                         <img v-for="(img, i) in project.images" :key="i" :src="img.url" alt="Imagem do projeto"
-                            class="absolute top-0 left-0 w-full h-full object-cover transition-opacity duration-1000"
-                            :class="{ 'opacity-100': currentImage === i, 'opacity-0': currentImage !== i }" />
+                            class="absolute top-0 left-0 w-full h-full object-cover cursor-zoom-in transition-opacity duration-1000"
+                            :class="{ 'opacity-100': currentImage === i, 'opacity-0': currentImage !== i }"
+                            @click="openModal(i)" />
+
                     </div>
                     <div v-else class="h-full w-full bg-neutral-800 flex items-center justify-center text-neutral-400">
                         Sem imagens disponíveis
@@ -92,6 +94,8 @@
             </div>
         </section>
     </main>
+    <ImageModal v-if="project?.images?.length" :images="project.images" :index="selectedImageIndex" :show="isModalOpen"
+        @close="isModalOpen = false" />
 </template>
 
 <script setup lang="ts">
@@ -100,6 +104,7 @@ import { useRoute } from 'vue-router'
 import type { Project } from '../types/index'
 import NebulaBackground from '../components/backgrounds/NebulaBackground.vue'
 import { fetchProjectById } from '../services/projectsService'
+import ImageModal from '../components/ImageModal.vue'
 
 import {
     ChevronLeft,
@@ -157,6 +162,14 @@ onMounted(async () => {
         }
     }
 })
+
+const isModalOpen = ref(false)
+const selectedImageIndex = ref(0)
+
+function openModal(index: number) {
+    selectedImageIndex.value = index
+    isModalOpen.value = true
+}
 
 function getRepositoryIcon(url: string) {
     if (url.includes('github.com')) return Github
