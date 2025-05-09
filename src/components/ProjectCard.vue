@@ -20,7 +20,7 @@
                 <span class="text-sm">{{ project.repositories.length }}</span>
             </div>
 
-            <div v-if="project.collaborators.length > 0" class="flex items-center gap-1"
+            <div v-if="project.collaborators.length > 1" class="flex items-center gap-1"
                 :title="`${project.collaborators.length} colaboradores`">
                 <UserRoundPlus class="w-5 h-5" />
                 <span class="text-sm">{{ project.collaborators.length }}</span>
