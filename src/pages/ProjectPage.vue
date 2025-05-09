@@ -101,10 +101,13 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
 import { useRoute } from 'vue-router'
-import type { Project } from '../types/index'
+
 import NebulaBackground from '../components/backgrounds/NebulaBackground.vue'
-import { fetchProjectById } from '../services/projectsService'
 import ImageModal from '../components/ImageModal.vue'
+
+import type { Project } from '../types/index'
+import { fetchProjectById } from '../services/projectsService'
+import { renderSimpleIcon } from '../utils/renderSimpleIcon'
 
 import {
     ChevronLeft,
@@ -175,38 +178,38 @@ function getRepositoryIcon(url: string) {
     if (url.includes('github.com')) return Github
     if (url.includes('gitlab.com')) return Gitlab
     if (url.includes('youtube.com')) return Youtube
-    if (url.includes('swagger.io')) return siSwagger
-    if (url.includes('notion.so')) return siNotion
+    if (url.includes('swagger.io')) return renderSimpleIcon(siSwagger)
+    if (url.includes('notion.so')) return renderSimpleIcon(siNotion)
     return Code
 }
 
 function getTechnologyIcon(url: string) {
-    if (url.includes('git-scm.com')) return siGit;
-    if (url.includes('docker.com')) return siDocker;
-    if (url.includes('javascript.com') || url.includes('js.org')) return siJavascript;
-    if (url.includes('typescriptlang.org')) return siTypescript;
-    if (url.includes('redis.io')) return siRedis;
-    if (url.includes('min.io')) return siMinio;
-    if (url.includes('reactjs.org')) return siReact;
-    if (url.includes('nodejs.org')) return siNodedotjs;
-    if (url.includes('vuejs.org')) return siVuedotjs;
-    if (url.includes('python.org')) return siPython;
-    if (url.includes('php.net')) return siPhp;
-    if (url.includes('ruby-lang.org')) return siRuby;
-    if (url.includes('mongodb.com')) return siMongodb;
-    if (url.includes('postgresql.org')) return siPostgresql;
-    if (url.includes('mysql.com')) return siMysql;
-    if (url.includes('w3.org/html')) return siHtml5;
-    if (url.includes('w3.org/css')) return siCss3;
-    if (url.includes('sass-lang.com')) return siSass;
-    if (url.includes('webpack.js.org')) return siWebpack;
-    if (url.includes('nginx.org')) return siNginx;
-    if (url.includes('kubernetes.io')) return siKubernetes;
-    if (url.includes('flutter.dev')) return siFlutter;
-    if (url.includes('vitejs.dev')) return siVite;
-    if (url.includes('jestjs.io')) return siJest;
-    if (url.includes('terraform.io')) return siTerraform;
-    return Link;
+    if (url.includes('git-scm.com')) return renderSimpleIcon(siGit)
+    if (url.includes('docker.com')) return renderSimpleIcon(siDocker)
+    if (url.includes('javascript.com') || url.includes('js.org')) return renderSimpleIcon(siJavascript)
+    if (url.includes('typescriptlang.org')) return renderSimpleIcon(siTypescript)
+    if (url.includes('redis.io')) return renderSimpleIcon(siRedis)
+    if (url.includes('min.io')) return renderSimpleIcon(siMinio)
+    if (url.includes('reactjs.org')) return renderSimpleIcon(siReact)
+    if (url.includes('nodejs.org')) return renderSimpleIcon(siNodedotjs)
+    if (url.includes('vuejs.org')) return renderSimpleIcon(siVuedotjs)
+    if (url.includes('python.org')) return renderSimpleIcon(siPython)
+    if (url.includes('php.net')) return renderSimpleIcon(siPhp)
+    if (url.includes('ruby-lang.org')) return renderSimpleIcon(siRuby)
+    if (url.includes('mongodb.com')) return renderSimpleIcon(siMongodb)
+    if (url.includes('postgresql.org')) return renderSimpleIcon(siPostgresql)
+    if (url.includes('mysql.com')) return renderSimpleIcon(siMysql)
+    if (url.includes('w3.org/html')) return renderSimpleIcon(siHtml5)
+    if (url.includes('w3.org/css')) return renderSimpleIcon(siCss3)
+    if (url.includes('sass-lang.com')) return renderSimpleIcon(siSass)
+    if (url.includes('webpack.js.org')) return renderSimpleIcon(siWebpack)
+    if (url.includes('nginx.org')) return renderSimpleIcon(siNginx)
+    if (url.includes('kubernetes.io')) return renderSimpleIcon(siKubernetes)
+    if (url.includes('flutter.dev')) return renderSimpleIcon(siFlutter)
+    if (url.includes('vitejs.dev')) return renderSimpleIcon(siVite)
+    if (url.includes('jestjs.io')) return renderSimpleIcon(siJest)
+    if (url.includes('terraform.io')) return renderSimpleIcon(siTerraform)
+    return Link
 }
 
 function formatStack(stack?: string): string {
