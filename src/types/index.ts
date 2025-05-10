@@ -26,6 +26,7 @@ export interface Project {
     summary: string
     description?: string
     stack: string
+    order: number,
     technologies: Technology[]
     collaborators: Collaborator[]
     repositories: Repository[]
